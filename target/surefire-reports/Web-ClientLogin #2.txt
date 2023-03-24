@@ -1,0 +1,42 @@
+-------------------------------------------------------------------------------
+Test set: Web-ClientLogin #2
+-------------------------------------------------------------------------------
+Tests run: 2, Failures: 2, Errors: 0, Skipped: 0, Time elapsed: 75.344 s <<< FAILURE! - in Web-ClientLogin #2
+Web-ClientLogin #2.To check UI of new user login screen #1  Time elapsed: 35.198 s  <<< FAILURE!
+com.codeborne.selenide.ex.ElementNotFound: 
+Element not found {By.xpath: //p[contains(@class,'css-1or58sj')]}
+Expected: visible
+Screenshot: file:/D:/Pawzeeble-Infosol-LLP/Pawzeeble/build/reports/tests/1679488902423.0.png
+Page source: file:/D:/Pawzeeble-Infosol-LLP/Pawzeeble/build/reports/tests/1679488902423.0.html
+Timeout: 20 s.
+Caused by: NoSuchElementException: no such element: Unable to locate element: {"method":"xpath","selector":"//p[contains(@class,'css-1or58sj')]"}
+Caused by: org.openqa.selenium.NoSuchElementException: 
+no such element: Unable to locate element: {"method":"xpath","selector":"//p[contains(@class,'css-1or58sj')]"}
+  (Session info: chrome=105.0.5195.127)
+For documentation on this error, please visit: https://selenium.dev/exceptions/#no_such_element
+Build info: version: '4.4.0', revision: 'e5c75ed026a'
+System info: host: 'DESKTOP-6NKMD35', ip: '192.168.31.135', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '11.0.16.1'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [0d40440f7a026b40794156c9a06296ef, findElement {using=xpath, value=//p[contains(@class,'css-1or58sj')]}]
+Capabilities {acceptInsecureCerts: true, browserName: chrome, browserVersion: 105.0.5195.127, chrome: {chromedriverVersion: 105.0.5195.52 (412c95e51883..., userDataDir: C:\Users\ue\AppData\Local\T...}, goog:chromeOptions: {debuggerAddress: localhost:64092}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:64092/devtoo..., se:cdpVersion: 105.0.5195.127, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: accept, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
+Session ID: 0d40440f7a026b40794156c9a06296ef
+
+Web-ClientLogin #2.To check UI of new user login screen #2  Time elapsed: 40.136 s  <<< FAILURE!
+com.codeborne.selenide.ex.ElementNotFound: 
+Element not found {By.xpath: //p[contains(@class,'css-ftzbya')]}
+Expected: exist
+Screenshot: file:/D:/Pawzeeble-Infosol-LLP/Pawzeeble/build/reports/tests/1679488942813.1.png
+Page source: file:/D:/Pawzeeble-Infosol-LLP/Pawzeeble/build/reports/tests/1679488942813.1.html
+Timeout: 20 s.
+Caused by: NoSuchElementException: no such element: Unable to locate element: {"method":"xpath","selector":"//p[contains(@class,'css-ftzbya')]"}
+Caused by: org.openqa.selenium.NoSuchElementException: 
+no such element: Unable to locate element: {"method":"xpath","selector":"//p[contains(@class,'css-ftzbya')]"}
+  (Session info: chrome=105.0.5195.127)
+For documentation on this error, please visit: https://selenium.dev/exceptions/#no_such_element
+Build info: version: '4.4.0', revision: 'e5c75ed026a'
+System info: host: 'DESKTOP-6NKMD35', ip: '192.168.31.135', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '11.0.16.1'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [7145c0f067ef43725f3e832501557c03, findElement {using=xpath, value=//p[contains(@class,'css-ftzbya')]}]
+Capabilities {acceptInsecureCerts: true, browserName: chrome, browserVersion: 105.0.5195.127, chrome: {chromedriverVersion: 105.0.5195.52 (412c95e51883..., userDataDir: C:\Users\ue\AppData\Local\T...}, goog:chromeOptions: {debuggerAddress: localhost:64198}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:64198/devtoo..., se:cdpVersion: 105.0.5195.127, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: accept, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
+Session ID: 7145c0f067ef43725f3e832501557c03
+
