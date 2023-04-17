@@ -2,10 +2,24 @@ package pooja.cucumber.demo.pageObject.client;
 
 
 import org.junit.Assert;
+import org.openqa.selenium.By;
+//import java.util.List;
+//import com.codeborne.selenide.ElementsCollection;
+//import java.util.Random;
+
+import com.codeborne.selenide.ElementsCollection;
+
+//import pooja.cucumber.demo.tests.stepDefinations.user.List;
+//import pooja.cucumber.demo.tests.stepDefinations.user.Random;
+//import pooja.cucumber.demo.tests.stepDefinations.user.WebElement;
+
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
 
+import java.util.Random;
+
 public class NewUserloginForm {
+
 
 	public final String lblHeading = "//p[contains(@class,'css-ftzbya')]";
 	public final String lblFullname ="//label[contains(text(),'First Name')]";
@@ -22,7 +36,7 @@ public class NewUserloginForm {
 	
 	public final String lblUserbio = "//label[contains(text(),'User Bio')]";
 	public final String txtUserbio = "//textarea[@name='bio']";
-	public final String backBtn = "//button[contains(text(),'Cancel')]";
+	public final String cancelBtn = "//button[contains(text(),'Cancel')]";
 	public final String nextBtn = "//button[contains(text(),'Next')]";
 	
 	public final String lbltopic = "//p[contains(@class,'css-310v7p')]";
@@ -38,7 +52,7 @@ public class NewUserloginForm {
 	public final String btncancel="//button[contains(@class,'css-6s7pno')]";
 	public final String btnnext="//button[contains(@class,'css-1otgy7v')]";
 	
-	
+	//Headings
 	public void verifyPageHeadingText(String heading) {
 		Assert.assertEquals("Please fill Personal details", 
 				$x(lblHeading).text().trim(),	heading.trim());
@@ -47,12 +61,26 @@ public class NewUserloginForm {
 	public void verifyPageHeadingDisplayed() {
 		$x(lblHeading).should(exist).shouldBe(visible);
 	}
+	public void verifyTopicPageHeadingText(String heading) {
+		Assert.assertEquals("Select topics of your interests", 
+				$x(lbltopic).text().trim(),	heading.trim());
+	}
 
-	public void clickBackButton() {
-		$x(backBtn).click();
+	public void verifyTopicPageHeadingDisplayed() {
+		$x(lbltopic).should(exist).shouldBe(visible);
+	}
+
+
+	public void clickCancelButton() {
+		$x(cancelBtn).click();
 	}
 	public void clickNextButton() {
 		$x(nextBtn).click();
+	}
+	
+	public void clickSubmitButton() throws InterruptedException {
+		$x(btnnext).click();
+		 Thread.sleep(2000);
 	}
 	
 	public void verifyNextButton(String buttonText) {
@@ -65,14 +93,14 @@ public class NewUserloginForm {
 				$x(nextBtn).text().trim(), buttonText.trim());
 	}
 
-	public void verifyBackButton(String buttonText) {
+	public void verifyCancelButton(String buttonText) {
 		// Check button icon
-		$x(backBtn).should(exist).shouldBe(visible);
+		$x(cancelBtn).should(exist).shouldBe(visible);
 		
 		// Check button text
 		
 		Assert.assertEquals("Back", 
-				$x(backBtn).text().trim(), buttonText.trim());
+				$x(cancelBtn).text().trim(), buttonText.trim());
 	}
 	
 	//first name 
@@ -87,6 +115,9 @@ public class NewUserloginForm {
 	}
 	public void verifyFirstnameTextbox() {
 		$x(txtFullname).should(exist).shouldBe(visible);
+	}
+	public void setFirstnameText(String text) {
+		$x(txtFullname).setValue(text);
 	}
 
 	public void verifyFirstnameValidationMessage(String msg) {
@@ -108,6 +139,9 @@ public class NewUserloginForm {
 	public void verifyEmailTextbox() {
 		$x(txtEmailaddress).should(exist).shouldBe(visible);
 	}
+	public void setEmailText(String text) {
+		$x(txtEmailaddress).setValue(text);
+	}
 
 	public void verifyEmailValidationMessage(String msg) {
 		$x(errorEmailaddress).should(exist).shouldBe(visible);
@@ -115,7 +149,7 @@ public class NewUserloginForm {
 				$x(errorEmailaddress).text().trim(), msg.trim());
 	}
 	
-	//Username 
+	//User name 
 	
 	public void verifyUsernameLabel() {
 		$x(lblUsername).should(exist).shouldBe(visible);
@@ -127,6 +161,9 @@ public class NewUserloginForm {
 	}
 	public void verifyUsernameTextbox() {
 		$x(txtUsername).should(exist).shouldBe(visible);
+	}
+	public void setUsernameText(String text) {
+		$x(txtUsername).setValue(text);
 	}
 
 	public void verifyUsernameValidationMessage(String msg) {
@@ -149,6 +186,11 @@ public class NewUserloginForm {
 		$x(txtMobilenumber).should(exist).shouldBe(visible);
 	}
 	
+	public void verifyMobNoTextboxdisabled()
+	{
+		$x(txtMobilenumber).should(exist).shouldBe(disabled);
+	}
+	
 	//User Bio
 	
 	public void verifyUserbioLabel() {
@@ -163,7 +205,19 @@ public class NewUserloginForm {
 		$x(txtUserbio).should(exist).shouldBe(visible);
 	}
 
-	
-	
+	public void userSelectsSuggestedTopicsRandomly()
+	{
+		int i;		
+        ElementsCollection coll= $$(By.cssSelector("button.css-1qq5qpu"));
+    	
+		for(i=1;i<4;i++)
+		{
+        Random random = new Random();
+		int index = random.nextInt(coll.size());
+		coll.get(index).click(); 
+		//ll.get(index).click(); 
+		}
+
 }
 
+}
