@@ -81,12 +81,12 @@ Feature: New User Login
     When User click on Next button on new user login screen
     Then User can see heading as "Select topics of your interests" 
     And user selects suggested topics 
-    And User clicks on next button
+    And User clicks on submit button
     And User can see his profile created successfully 
     
     Examples:
     |mobileNumber |firstname    | email                 | username    |
-    |7454339241   | testauto    | testauto1@gmail.com    | testauto    |
+    |8527834259   | testauto    | testauto1@gmail.com    | testauto    |
     
     
     

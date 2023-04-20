@@ -21,36 +21,36 @@ import java.util.Random;
 public class NewUserloginForm {
 
 
-	public final String lblHeading = "//p[contains(@class,'css-ftzbya')]";
-	public final String lblFullname ="//label[contains(text(),'First Name')]";
-	public final String txtFullname = "//input[@id='fullName']"; 
-	public final String errorFullname="//p[contains(text(),'Full Name must be at least 3 characters')]";
-	public final String lblEmail ="//label[contains(text(),'Email address')]";
-	public final String txtEmailaddress = "//input[@name='email']";
-	public final String errorEmailaddress="//p[contains(@class,'css-1yhc7zx')]";
-	public final String lblMobilenumber = "//label[contains(text(),'Mobile number')]";
-	public final String txtMobilenumber = "//input[contains(@class,'css-4a8g6')]";
-	public final String lblUsername = "//label[contains(text(),'username')]";
-	public final String txtUsername = "//input[@name='username']";
-	public final String errorUsername="//p[contains(text(),'Username must be at least 3 characters')]";
+	public static final String lblHeading = "//p[contains(@class,'css-ftzbya')]";
+	public static final String lblFullname ="//label[contains(text(),'First Name')]";
+	public static final String txtFullname = "//input[@id='fullName']"; 
+	public static final String errorFullname="//p[contains(text(),'Full Name must be at least 3 characters')]";
+	public static final String lblEmail ="//label[contains(text(),'Email address')]";
+	public static final String txtEmailaddress = "//input[@name='email']";
+	public static final String errorEmailaddress="//p[contains(@class,'css-1yhc7zx')]";
+	public static final String lblMobilenumber = "//label[contains(text(),'Mobile number')]";
+	public static final String txtMobilenumber = "//input[contains(@class,'css-4a8g6')]";
+	public static final String lblUsername = "//label[contains(text(),'username')]";
+	public static final String txtUsername = "//input[@name='username']";
+	public static final String errorUsername="//p[contains(text(),'Username must be at least 3 characters')]";
 	
-	public final String lblUserbio = "//label[contains(text(),'User Bio')]";
-	public final String txtUserbio = "//textarea[@name='bio']";
-	public final String cancelBtn = "//button[contains(text(),'Cancel')]";
-	public final String nextBtn = "//button[contains(text(),'Next')]";
+	public static final String lblUserbio = "//label[contains(text(),'User Bio')]";
+	public static final String txtUserbio = "//textarea[@name='bio']";
+	public static final String cancelBtn = "//button[contains(text(),'Cancel')]";
+	public static final String nextBtn = "//button[contains(text(),'Next')]";
 	
-	public final String lbltopic = "//p[contains(@class,'css-310v7p')]";
-	public final String lblinfo = "//p[contains(@class,'css-18b0rdw')]";
-	public final String lblselecttopic ="//label[contains(@class,'css-m94bag')]";
-	public final String dropdwnselecttopic = "//div[contains(@class,'css-19bb58m')]";
-	public final String lblmessage="//p[contains(text(),'Array must contain at least 3 element(s)')]";
-	public final String lblsuggestedtop = "//p[contains(text(),'Suggested Topics')]";
-	public final String lblsuggestedtop1 = "//button[contains(text(),'Education')]";
-	public final String lblsuggestedtop2= "//button[contains(text(),'Health')]";
-	public final String lblsuggestedtop3= "//button[contains(text(),'Environment')]";
-	public final String lblsuggestedtop4= "//button[contains(text(),'Animals')]";
-	public final String btncancel="//button[contains(@class,'css-6s7pno')]";
-	public final String btnnext="//button[contains(@class,'css-1otgy7v')]";
+	public static final String lbltopic = "//p[contains(@class,'css-310v7p')]";
+	public static final String lblinfo = "//p[contains(@class,'css-18b0rdw')]";
+	public static final String lblselecttopic ="//label[contains(@class,'css-m94bag')]";
+	public static final String dropdwnselecttopic = "//div[contains(@class,'css-19bb58m')]";
+	public static final String lblmessage="//p[contains(text(),'Array must contain at least 3 element(s)')]";
+	public static final String lblsuggestedtop = "//p[contains(text(),'Suggested Topics')]";
+	public static final String lblsuggestedtop1 = "//button[contains(text(),'Education')]";
+	public static final String lblsuggestedtop2= "//button[contains(text(),'Health')]";
+	public static final String lblsuggestedtop3= "//button[contains(text(),'Environment')]";
+	public static final String lblsuggestedtop4= "//button[contains(text(),'Animals')]";
+	public static final String btncancel="//button[contains(@class,'css-6s7pno')]";
+	public static final String btnnext="//button[contains(@class,'css-1otgy7v')]";
 	
 	//Headings
 	public void verifyPageHeadingText(String heading) {
@@ -58,7 +58,7 @@ public class NewUserloginForm {
 				$x(lblHeading).text().trim(),	heading.trim());
 	}
 
-	public void verifyPageHeadingDisplayed() {
+	public static void verifyPageHeadingDisplayed() {
 		$x(lblHeading).should(exist).shouldBe(visible);
 	}
 	public void verifyTopicPageHeadingText(String heading) {

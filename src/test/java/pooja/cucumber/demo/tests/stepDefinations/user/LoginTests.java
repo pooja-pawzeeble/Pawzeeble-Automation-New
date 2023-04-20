@@ -25,7 +25,7 @@ public class LoginTests {
 	public void user_clicks_on_join_pawzeeble_button() throws Throwable {
 		
 		hp.verifyJoinPawzeebleButton();
-		hp.clickJoinPawzeebleButton();
+		HomePage.clickJoinPawzeebleButton();
 		
 	}
 
@@ -43,7 +43,7 @@ public class LoginTests {
 
 	@Then("^User can see validation message \"([^\"]*)\" on login screen$")
 	public void user_can_see_validation_message_something_on_login_screen(String strArg1) throws Throwable {
-		$x(l.LoginConfig.get("lblErrorMessage").toString()).should(exist).shouldBe(visible).shouldHave(text(strArg1));
+		$x(Login.lblErrorMessage).should(exist).shouldBe(visible).shouldHave(text(strArg1));
 		Thread.sleep(2000);
 	}	
 
@@ -83,13 +83,13 @@ public class LoginTests {
 
 	    @And("^User clicks on Send OTP button$")
 	    public void user_clicks_on_send_otp_button() throws Throwable {
-	    	 l.clickSendOtpButton();
+	    	 Login.clickSendOtpButton();
 	    }
 	
 	@When("^User enter mobile number as (.+) on login screen$")
     public void user_enter_mobile_number_as_on_login_screen(String mobilenumber) throws Throwable {
       
-        l.setMobileNumbers(mobilenumber);
+        Login.setMobileNumbers(mobilenumber);
         Thread.sleep(2000);
     }
 
@@ -112,12 +112,12 @@ public class LoginTests {
 
     @When("^User enter OTP as \"([^\"]*)\"$")
     public void user_enter_otp_as_something(String strArg1) throws Throwable {
-    	l.enterOTP();
+    	Login.enterOTP();
     }
 
     @When("^User clicks on Verify OTP button$")
     public void user_clicks_on_verify_otp_button() throws Throwable {	
-    l.clickVerifyOtpButton();
+    Login.clickVerifyOtpButton();
     }
 
     @Then("^User can see send OTP button is enabled$")

@@ -13,10 +13,10 @@ import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 
 public class Location {
-	public final String locBtn = "//button[contains(@class,'css-17ej51l')]";
-	public final String lblocation ="//p[contains(@class,'css-klozxl')]";
-	public final String locInput = "//input[@id=':r0:']";
-	public final String BtnLocateme ="//button[contains(@class,'css-1k9z99v')]";
+	public static final String locBtn = "//button[contains(@class,'css-17ej51l')]";
+	public static final String lblocation ="//p[contains(@class,'css-klozxl')]";
+	public static final String locInput = "//input[@id=':r0:']";
+	public static final String BtnLocateme ="//button[contains(@class,'css-1k9z99v')]";
 	
 	public void clickLocationBtn() {
 		$x(locBtn).click();

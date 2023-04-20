@@ -7,14 +7,13 @@ import io.cucumber.java.en.*;
 import pooja.cucumber.demo.pageObject.client.HomePage;
 import pooja.cucumber.demo.pageObject.client.Login;
 import pooja.cucumber.demo.pageObject.client.NewUserloginForm;
-//import pooja.cucumber.demo.pageObject.client.PetProfile;
-
+import pooja.cucumber.demo.pageObject.client.PetProfile;
 public class UserProfileTests {
 	
 	NewUserloginForm n = new NewUserloginForm();
 	Login l = new Login();
 	HomePage hp = new HomePage();
-//	PetProfile pp= new PetProfile();
+    PetProfile pp= new PetProfile();
 	
 	public boolean fname=true, mail=true,uname=true;
 	
@@ -28,7 +27,7 @@ public class UserProfileTests {
     @Then("^User can see heading as \"([^\"]*)\" on new user login screen$")
     public void user_can_see_heading_as_something_on_new_user_login_screen(String strArg1) throws Throwable {
     	
-    	n.verifyPageHeadingDisplayed();
+    	NewUserloginForm.verifyPageHeadingDisplayed();
     	n.verifyPageHeadingText(strArg1);
     }
 
@@ -90,19 +89,20 @@ public class UserProfileTests {
     @When("^User on New User Profile screen$")
     public void user_on_new_user_profile_screen() throws Throwable {
     	
-    	n.verifyPageHeadingDisplayed();
+    	NewUserloginForm.verifyPageHeadingDisplayed();
     	
     	
     }
     
     @When("^User on New User Profile screen with mobile number as (.+)$")
     public void user_on_new_user_profile_screen_with_mobile_number_as(String mobilenumber) throws Throwable {
-    	hp.clickJoinPawzeebleButton();
-    	l.setMobileNumbers(mobilenumber);
-    	 l.clickSendOtpButton();
-    	l.enterOTP();
-    	 l.clickVerifyOtpButton();
-    	 n.verifyPageHeadingDisplayed();
+    	HomePage.clickJoinPawzeebleButton();
+    	Login.setMobileNumbers(mobilenumber);
+    	Thread.sleep(2000);
+    	 Login.clickSendOtpButton();
+    	Login.enterOTP();
+    	 Login.clickVerifyOtpButton();
+    	 NewUserloginForm.verifyPageHeadingDisplayed();
     }
 
     @When("^User can see Cancel button with heading \"([^\"]*)\" on new user login screen$")
@@ -112,7 +112,7 @@ public class UserProfileTests {
 
     @Then("^User is on Home page$")
     public void user_is_on_home_page() throws Throwable {
-    	$x(hp.menuLogin).shouldBe(visible);
+    	$x(HomePage.menuLogin).shouldBe(visible);
     	Thread.sleep(2000);
     }
 
@@ -184,16 +184,21 @@ public class UserProfileTests {
     	Thread.sleep(2000);
     	
     }
-
-    
-    public void user_clicks_on_next_button() throws Throwable {
-       n.clickSubmitButton();
-       Thread.sleep(3000);
+//    @And("^User clicks on next button$")
+//    public void User_clicks_on_submit_button() throws Throwable {
+//    	n.clickSubmitButton();
+//        Thread.sleep(3000);  
+//    }
+    @And("^User clicks on submit button$")
+    public void user_clicks_on_submit_button() throws Throwable {
+    	n.clickSubmitButton();
+    	Thread.sleep(3000);  
     }
 
-//    @And("^User can see his profile created successfully$")
-//    public void user_can_see_his_profile_created_successfully() throws Throwable {
-//    	//$x(pp.lblHeadingName).shouldBe(visible);
-//    	pp.userProfileCreatedSuccessfully();
-//    }
+
+    @And("^User can see his profile created successfully$")
+    public void user_can_see_his_profile_created_successfully() throws Throwable {
+    	//$x(pp.lblHeadingName).shouldBe(visible);
+    	pp.userProfileCreatedSuccessfully();
+    }
 }

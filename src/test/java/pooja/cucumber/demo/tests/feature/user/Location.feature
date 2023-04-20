@@ -19,3 +19,6 @@ Feature: Location
   Examples:
   |location|
  	|Pune Maharashtra|
+ 	
+ 	#switch between multiple locations pune--then mumbai----then pune
+ 	#accept location that contains devnagari address also

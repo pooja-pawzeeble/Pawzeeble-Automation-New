@@ -1,6 +1,7 @@
-pooja\cucumber\demo\tests\base\BaseE2ETest.class
-pooja\cucumber\demo\tests\stepDefinations\user\LoginTests.class
 pooja\cucumber\demo\tests\base\Hooks.class
-pooja\cucumber\demo\tests\stepDefinations\user\UserProfileTests.class
 pooja\cucumber\demo\tests\stepDefinations\user\LocationTests.class
 pooja\cucumber\tests\runner\RunnerTest.class
+pooja\cucumber\demo\tests\base\BaseE2ETest.class
+pooja\cucumber\demo\tests\stepDefinations\user\LoginTests.class
+pooja\cucumber\demo\tests\stepDefinations\user\UserProfileTests.class
+pooja\cucumber\demo\tests\stepDefinations\user\PetProfileTests.class
