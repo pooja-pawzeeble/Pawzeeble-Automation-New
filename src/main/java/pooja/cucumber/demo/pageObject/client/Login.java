@@ -37,7 +37,7 @@ public class Login {
 	
 	public static final String btnVerifyOtp= "//button[contains(text(),'Verify OTP')]";
 	public static final String btnResendOtp= "//button[contains(text(),'Resend OTP')]";
-	//Headings
+	//Headings1234S
 		public void verifyHeadingText(String heading) {
 			Assert.assertEquals("Welcome to Pawzeeble[ 👋🏼]", 
 					$x(lblHeading).text().trim(),	heading.trim());
