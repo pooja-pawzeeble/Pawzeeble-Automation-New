@@ -1,13 +1,12 @@
 package pooja.cucumber.demo.tests.stepDefinations.user;
 //import static com.codeborne.selenide.Condition.*;
-//import static com.codeborne.selenide.Selenide.$x;
-
 import static com.codeborne.selenide.Condition.disabled;
 import static com.codeborne.selenide.Selenide.$x;
 
 import io.cucumber.java.en.*;
 import pooja.cucumber.demo.pageObject.client.HomePage;
 import pooja.cucumber.demo.pageObject.client.Login;
+import pooja.cucumber.demo.pageObject.client.NewUserloginForm;
 //import pooja.cucumber.demo.pageObject.client.NewUserloginForm;
 import pooja.cucumber.demo.pageObject.client.PetProfile;
 import pooja.cucumber.demo.pageObject.client.UserProfile;
@@ -16,6 +15,7 @@ public class PetProfileTests {
 	
 	PetProfile pp= new PetProfile();
 	UserProfile up= new UserProfile();
+	HomePage hp= new HomePage();
 	public boolean pname=true, uname=true;
 	@When("^User sees New User Profile created$")
     public void user_sees_new_user_profile_created() throws Throwable {
@@ -26,7 +26,21 @@ public class PetProfileTests {
 //    	Login.clickVerifyOtpButton();
 		pp.userProfileCreatedSuccessfully();
     }
-	
+	 @When("^User sees New User Profile created with mobile number as (.+)(.+)(.+)(.+)$")
+	 public void user_sees_new_user_profile_created_with_mobile_number_as(String mobilenumber, String firstname, String email, String username) throws Throwable {
+		hp.clickJoinPawzeebleButton();
+    	Login.setMobileNumbers(mobilenumber);
+    	Login.clickSendOtpButton();
+    	 Login.enterOTP();
+    	Login.clickVerifyOtpButton();
+    	NewUserloginForm.setFirstnameText(firstname);
+    	NewUserloginForm.setEmailText(email);
+    	NewUserloginForm.setUsernameText(username);
+    	NewUserloginForm.clickNextButton();
+    	NewUserloginForm.userSelectsSuggestedTopicsRandomly();
+    	NewUserloginForm.clickSubmitButton();
+		//pp.userProfileCreatedSuccessfully();
+    }
 	    @Then("^User can see heading as \"([^\"]*)\" on Pet Profile screen$")
 	    public void user_can_see_heading_as_something_on_pet_profile_screen(String strArg1) throws Throwable {
 	       pp.verifyHeadingText(strArg1);
@@ -109,11 +123,6 @@ public class PetProfileTests {
 	    	$x(PetProfile.lblPetName).click();
 	    }
 	    
-	    @Then("^User can see validation message \"([^\"]*)\" on Pet Profile screen$")
-	    public void user_can_see_pet_user_validation_message_something_on_pet_profile_screen(String strArg1) throws Throwable {
-	      
-	    }
-
 	    @And("^User can see next button is disabled$")
 	    public void user_can_see_next_button_is_disabled() throws Throwable {
 	    	$x(PetProfile.btnNext).shouldBe(disabled);
@@ -127,7 +136,7 @@ public class PetProfileTests {
 
 	    @Then("^pet profile created successfully$")
 	    public void pet_profile_created_successfully() throws Throwable {
-	    	up.userLoginSuccessfully();
+	    	UserProfile.userLoginSuccessfully();
 	    }
 
 	    @And("^User enter petname as (.+) on Pet Profile screen$")
@@ -192,7 +201,7 @@ public class PetProfileTests {
 	    
 	    @When("^User click on add pet button from user profile screen using mobile number as \"([^\"]*)\"$")
 	    public void user_click_on_add_pet_button_from_user_profile_screen_using_mobile_number_as_something(String strArg1) throws Throwable {
-	    	HomePage.clickJoinPawzeebleButton();
+	    	hp.clickJoinPawzeebleButton();
 	    	Login.setMobileNumbers(strArg1);
 	    	Login.clickSendOtpButton();
 	    	 Login.enterOTP();
@@ -203,7 +212,25 @@ public class PetProfileTests {
 	    @Then("^User can skip pet profile$")
 	    public void user_can_skip_pet_profile() throws Throwable {
 	    	$x(PetProfile.btnSkip).click();
-	    	up.userLoginSuccessfully(); 
+	    	UserProfile.userLoginSuccessfully(); 
+	    }
+	    
+	    @Then("^User can see pet name validation message \"([^\"]*)\" on Pet Profile screen$")
+	    public void user_can_see_pet_name_validation_message_something_on_pet_profile_screen(String strArg1) throws Throwable {
+	    	pp.verifyPetNameValidationMessage(strArg1);
+	    }
+	    @Then("^User can see pet user validation message \"([^\"]*)\" on Pet Profile screen$")
+	    public void user_can_see_pet_user_validation_message_something_on_pet_profile_screen(String strArg1) throws Throwable {
+	        pp.verifyPetUserNameValidationMessage(strArg1);
+	    }
+	    @Then("^pet profile form is cancelled$")
+	    public void pet_profile_form_is_cancelled() throws Throwable {
+	       UserProfile.userLoginSuccessfully();
+	    }
+
+	    @And("^User clicks on Cancel button$")
+	    public void user_clicks_on_cancel_button() throws Throwable {
+	        pp.clickCancelButton();
 	    }
 	
 }

@@ -25,7 +25,7 @@ public class LoginTests {
 	public void user_clicks_on_join_pawzeeble_button() throws Throwable {
 		
 		hp.verifyJoinPawzeebleButton();
-		HomePage.clickJoinPawzeebleButton();
+		hp.clickJoinPawzeebleButton();
 		
 	}
 
@@ -139,7 +139,7 @@ public class LoginTests {
     @Then("^User logins successfully$")
     public void user_logins_successfully() throws Throwable {
     	
-    	userp.userLoginSuccessfully();
+    	UserProfile.userLoginSuccessfully();
     	Thread.sleep(2000);
     }
 

@@ -7,12 +7,15 @@ public class UserProfile {
 	
 	public static final String lblUserName = "//p[contains(@class,'css-1or58sj')]";
 	public static final String BtnAddPet = "//img[@alt='add pet']";
+	public static final String BtnEditUserProfile ="//a[@title='Edit Pet Profile']";
 //	public final String lblFullname = "//p[contains(@class,'css-1ffir3u')]";
 //	
 //	public final String lblUserBio ="//p[contains(@class,'css-8rgzhr')]//b[@class='MuiBox-root css-0']";
 //	
-	public void userLoginSuccessfully() 
+	public static void userLoginSuccessfully() 
 	{
-		$x(lblUserName).shouldBe(visible);
+		$x(BtnEditUserProfile).shouldBe(visible);
 	}
 }
+
+

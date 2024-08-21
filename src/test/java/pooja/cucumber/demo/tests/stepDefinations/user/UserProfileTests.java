@@ -20,7 +20,7 @@ public class UserProfileTests {
 	@When("^User click on Next button on new user login screen$")
     public void user_click_on_next_button_on_new_user_login_screen() throws Throwable {
 		n.verifyNextButton("Next");
-       n.clickNextButton();
+       NewUserloginForm.clickNextButton();
        Thread.sleep(2000);
     }
 
@@ -96,7 +96,7 @@ public class UserProfileTests {
     
     @When("^User on New User Profile screen with mobile number as (.+)$")
     public void user_on_new_user_profile_screen_with_mobile_number_as(String mobilenumber) throws Throwable {
-    	HomePage.clickJoinPawzeebleButton();
+    	hp.clickJoinPawzeebleButton();
     	Login.setMobileNumbers(mobilenumber);
     	Thread.sleep(2000);
     	 Login.clickSendOtpButton();
@@ -112,7 +112,7 @@ public class UserProfileTests {
 
     @Then("^User is on Home page$")
     public void user_is_on_home_page() throws Throwable {
-    	$x(HomePage.menuLogin).shouldBe(visible);
+    	$x(hp.menuLogin).shouldBe(visible);
     	Thread.sleep(2000);
     }
 
@@ -124,9 +124,9 @@ public class UserProfileTests {
     @And("^User enter firstname as (.+) on new user login screen$")
     public void user_enter_firstname_as_on_new_user_login_screen(String firstname) throws Throwable {
     	if(firstname.trim().equalsIgnoreCase("space")) {
-			n.setFirstnameText(" ");
+			NewUserloginForm.setFirstnameText(" ");
 		}else if(!firstname.trim().equalsIgnoreCase("empty")) {
-			n.setFirstnameText(firstname);
+			NewUserloginForm.setFirstnameText(firstname);
 			fname = false;
 		}
     	Thread.sleep(2000);
@@ -135,9 +135,9 @@ public class UserProfileTests {
     @And("^User enter email as (.+) on new user login screen$")
     public void user_enter_email_as_on_new_user_login_screen(String email) throws Throwable {
     	if(email.equalsIgnoreCase("space")) {
-			n.setEmailText(" ");
+			NewUserloginForm.setEmailText(" ");
 		}else if(!email.equalsIgnoreCase("empty")) {
-			n.setEmailText(email);
+			NewUserloginForm.setEmailText(email);
 			mail = false;
 		}
     	Thread.sleep(2000);
@@ -146,9 +146,9 @@ public class UserProfileTests {
     @And("^User enter username as (.+) on new user login screen$")
     public void user_enter_username_as_on_new_user_login_screen(String username) throws Throwable {
     	if(username.equalsIgnoreCase("space")) {
-			n.setUsernameText(" ");
+			NewUserloginForm.setUsernameText(" ");
 		}else if(!username.equalsIgnoreCase("empty")) {
-			n.setUsernameText(username);
+			NewUserloginForm.setUsernameText(username);
 			uname = false;
 		}
     	Thread.sleep(2000);
@@ -180,7 +180,7 @@ public class UserProfileTests {
     @And("^user selects suggested topics$")
     public void user_selects_suggested_topics() throws Throwable {
     	
-    	n.userSelectsSuggestedTopicsRandomly();
+    	NewUserloginForm.userSelectsSuggestedTopicsRandomly();
     	Thread.sleep(2000);
     	
     }
@@ -191,7 +191,7 @@ public class UserProfileTests {
 //    }
     @And("^User clicks on submit button$")
     public void user_clicks_on_submit_button() throws Throwable {
-    	n.clickSubmitButton();
+    	NewUserloginForm.clickSubmitButton();
     	Thread.sleep(3000);  
     }
 

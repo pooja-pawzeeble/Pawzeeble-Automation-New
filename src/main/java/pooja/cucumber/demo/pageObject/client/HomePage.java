@@ -8,9 +8,9 @@ import static com.codeborne.selenide.Selenide.$x;
 
 public class HomePage {
 	//public final String menuLogin = "//div[@class='MuiBox-root css-1t7ej7c']//*[@data-testid='LoginIcon']";
-	public static final String menuLogin = "//img[@alt='avatar']";// login icon on top right 
+	public final String menuLogin = "//a[@test-id='btn-login']";// login icon on top right 
 	
-	public static void clickJoinPawzeebleButton() {
+	public void clickJoinPawzeebleButton() {
 		$x(menuLogin).click();
 	}
 	

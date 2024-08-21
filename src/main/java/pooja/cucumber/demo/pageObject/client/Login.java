@@ -14,22 +14,29 @@ import com.codeborne.selenide.SelenideElement;
 public class Login {
 	
 	
-	public static final String lblHeading = "//p[contains(@class,'css-ohf6vn')]";
-	public static final String lblSubHeading = "//p[contains(@class,'css-pe526h')]";
+	public static final String lblHeading = "//div[@id='form_h1']";
+	public static final String lblSubHeading = "//div[contains(text(),'login/signup')]";
 
-	public static final String lblPhoneNumber = "//label[contains(text(),'Mobile Number')]"; 
-	public static final String txtCountrycode = "//input[@value='+91']";
-	public static final String txtMobile = "//input[@name='mobile']";
-	//public final String ckbRememberMe = "//div[@class='MuiBox-root css-1elmi5e']//input[@id='rememberMe']";
-	//public final String lblRememberMe = "//div[@class='MuiBox-root css-1elmi5e']//p[contains(@class,'css-1sh9bn9')]";
-	public static final String btnSendOTP = "//button[contains(@class,'css-1rbkd69')]";
-	public static final String lblErrorMessage = "//div[@class='MuiBox-root css-m1ws16']//p";
+	public static final String lblPhoneNumber = "//div[@id='mobileNumberLabel']"; 
+	//public static final String txtCountrycode = "//div[@test-id='mobile-number-country-code']";
+	public static final String txtMobile = "//input[@id='PhoneInput']";
 	
-	public static final String lblHeadingOtp = "//p[contains(@class,'css-1q0squ4')]";
-	public static final String lblSubHeadingOtp = "//p[contains(@class,'css-1ovz3f9')]";
-	public static final String lblOtp= "//label[contains(@class,'css-qhtyrs')]";
-	public static final String btnVerifyOtp= "//button[contains(@class,'css-1cma124' ) and contains(text(),'Verify OTP')]";
+
+	public static final String btnContinue = "//button[@id='continueBtn']";
+	public static final String lblErrorMessage = "//p[@test-id='phone-number-error']";
 	
+	public static final String lblPassword = "//div[@id='passwordLabel']";
+	public static final String txtPassword  = "//input[@id='userPassword']";
+	public static final String btnForgotPassword  = "//span[@id='forgotPasswordBtn']";
+	
+	public static final String lblOTP = "//span[@id='generateOTPHandlerBtn']";
+	
+	public static final String lblHeadingOtp = "//div[contains(text(),'Please provide the OTP')]";
+	public static final String lblSubHeadingOtp = "//div[contains(text(),'An OTP has')]";
+	public static final String lblOtp= "//input[@id='otp']";
+	
+	public static final String btnVerifyOtp= "//button[contains(text(),'Verify OTP')]";
+	public static final String btnResendOtp= "//button[contains(text(),'Resend OTP')]";
 	//Headings
 		public void verifyHeadingText(String heading) {
 			Assert.assertEquals("Welcome to Pawzeeble[ 👋🏼]", 
@@ -49,7 +56,7 @@ public class Login {
 		}
 	//Subheading
 		public void verifySubHeadingText(String heading) {
-			Assert.assertEquals("Please provide the following details to login", 
+			Assert.assertEquals("Please provide the following details to login/signup", 
 					$x(lblSubHeading).text().trim(),	heading.trim());
 		}
 
@@ -67,7 +74,7 @@ public class Login {
 		}
 	//Mobile number label
 		public void verifyMobilenumberLabelText(String heading) {
-			Assert.assertEquals("Mobile Number", 
+			Assert.assertEquals("Mobile Number (required)", 
 					$x(lblPhoneNumber).text().trim(),	heading.trim());
 		}
 
@@ -92,20 +99,20 @@ public class Login {
 //Send OTP button
 		
 		public void verifySendOTPButtonDisplayed(String text) {
-			$x(btnSendOTP).should(exist).shouldBe(visible).shouldHave(text(text));
+			$x(btnContinue).should(exist).shouldBe(visible).shouldHave(text(text));
 		}
 		
 		public void verifySendOTPBtnDisabled()
 		{
-			$x(btnSendOTP).shouldBe(disabled);
+			$x(btnContinue).shouldBe(disabled);
 		}
 		
 		public void verifySendOTPBtnEnabled()
 		{
-			$x(btnSendOTP).shouldBe(enabled);
+			$x(btnContinue).shouldBe(enabled);
 		}
 		public static void clickSendOtpButton() {
-			$x(btnSendOTP).click();
+			$x(lblOTP).click();// label otp
 		}
 		public void checkVerifyOTPBtnEnabled()
 		{
@@ -118,7 +125,7 @@ public class Login {
 		
 		public static void enterOTP()
 		{
-			ElementsCollection coll= $$(By.cssSelector("input.css-xuc6iw"));
+			ElementsCollection coll= $$(By.cssSelector("input#otp"));
 	    	
 	    	String s = "0 9 8 7 6 5";
 			String[] str1 = s.split(" ");

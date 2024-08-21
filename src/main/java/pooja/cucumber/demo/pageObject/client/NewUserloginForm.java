@@ -22,17 +22,17 @@ public class NewUserloginForm {
 
 
 	public static final String lblHeading = "//p[contains(@class,'css-ftzbya')]";
-	public static final String lblFullname ="//label[contains(text(),'First Name')]";
-	public static final String txtFullname = "//input[@id='fullName']"; 
-	public static final String errorFullname="//p[contains(text(),'Full Name must be at least 3 characters')]";
-	public static final String lblEmail ="//label[contains(text(),'Email address')]";
-	public static final String txtEmailaddress = "//input[@name='email']";
-	public static final String errorEmailaddress="//p[contains(@class,'css-1yhc7zx')]";
-	public static final String lblMobilenumber = "//label[contains(text(),'Mobile number')]";
+	public static final String lblFullname ="//label[@test-id='profile-full-name-label']";
+	public static final String txtFullname = "//input[@id='name']"; 
+	public static final String errorFullname="//p[@test-id='profile-full-name-error']";
+	public static final String lblEmail ="//label[@test-id='profile-email-label']";
+	public static final String txtEmailaddress = "//input[@test-id='profile-email']";
+	public static final String errorEmailaddress="//p[@test-id='profile-email-error']";
+	public static final String lblMobilenumber = "//label[@test-id='profile-mobile-number-label']";
 	public static final String txtMobilenumber = "//input[contains(@class,'css-4a8g6')]";
-	public static final String lblUsername = "//label[contains(text(),'username')]";
-	public static final String txtUsername = "//input[@name='username']";
-	public static final String errorUsername="//p[contains(text(),'Username must be at least 3 characters')]";
+	public static final String lblUsername = "//label[@test-id='profile-username-label']";
+	public static final String txtUsername = "//input[@test-id='profile-user-name']";
+	public static final String errorUsername="//p[@test-id='profile-username-error']";
 	
 	public static final String lblUserbio = "//label[contains(text(),'User Bio')]";
 	public static final String txtUserbio = "//textarea[@name='bio']";
@@ -41,9 +41,9 @@ public class NewUserloginForm {
 	
 	public static final String lbltopic = "//p[contains(@class,'css-310v7p')]";
 	public static final String lblinfo = "//p[contains(@class,'css-18b0rdw')]";
-	public static final String lblselecttopic ="//label[contains(@class,'css-m94bag')]";
+	public static final String lblselecttopic ="//label[@test-id='profile-interests-label']";
 	public static final String dropdwnselecttopic = "//div[contains(@class,'css-19bb58m')]";
-	public static final String lblmessage="//p[contains(text(),'Array must contain at least 3 element(s)')]";
+	public static final String lblmessage="//p[@test-id='profile-interests-error']";
 	public static final String lblsuggestedtop = "//p[contains(text(),'Suggested Topics')]";
 	public static final String lblsuggestedtop1 = "//button[contains(text(),'Education')]";
 	public static final String lblsuggestedtop2= "//button[contains(text(),'Health')]";
@@ -74,11 +74,11 @@ public class NewUserloginForm {
 	public void clickCancelButton() {
 		$x(cancelBtn).click();
 	}
-	public void clickNextButton() {
+	public static void clickNextButton() {
 		$x(nextBtn).click();
 	}
 	
-	public void clickSubmitButton() throws InterruptedException {
+	public static void clickSubmitButton() throws InterruptedException {
 		$x(btnnext).click();
 		 Thread.sleep(2000);
 	}
@@ -116,7 +116,7 @@ public class NewUserloginForm {
 	public void verifyFirstnameTextbox() {
 		$x(txtFullname).should(exist).shouldBe(visible);
 	}
-	public void setFirstnameText(String text) {
+	public static void setFirstnameText(String text) {
 		$x(txtFullname).setValue(text);
 	}
 
@@ -139,7 +139,7 @@ public class NewUserloginForm {
 	public void verifyEmailTextbox() {
 		$x(txtEmailaddress).should(exist).shouldBe(visible);
 	}
-	public void setEmailText(String text) {
+	public static void setEmailText(String text) {
 		$x(txtEmailaddress).setValue(text);
 	}
 
@@ -162,7 +162,7 @@ public class NewUserloginForm {
 	public void verifyUsernameTextbox() {
 		$x(txtUsername).should(exist).shouldBe(visible);
 	}
-	public void setUsernameText(String text) {
+	public static void setUsernameText(String text) {
 		$x(txtUsername).setValue(text);
 	}
 
@@ -205,7 +205,7 @@ public class NewUserloginForm {
 		$x(txtUserbio).should(exist).shouldBe(visible);
 	}
 
-	public void userSelectsSuggestedTopicsRandomly()
+	public static void userSelectsSuggestedTopicsRandomly()
 	{
 		int i;		
         ElementsCollection coll= $$(By.cssSelector("button.css-1qq5qpu"));
