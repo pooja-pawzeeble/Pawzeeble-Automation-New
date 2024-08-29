@@ -6,7 +6,7 @@ import io.cucumber.junit.*;
 @RunWith(Cucumber.class)
 @CucumberOptions(
 		features = {"src/test/java/pooja/cucumber/demo/tests/feature"},				
-		tags="@",
+		tags="@e2e",
 		glue={"pooja.cucumber.demo.tests.stepDefinations.user","pooja.cucumber.demo.tests.base"},
 		monochrome = true,
 		plugin= {"pretty", "html:target/cucumber/report.html", "json:target/JSONReports/report.json","io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm"
