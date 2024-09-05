@@ -61,7 +61,7 @@ public class LoginTests {
 		
 	}
 	@Then("User should see an error message {string}")
-    public void user_should_see_an_error_message(String message) {
+    public void user_should_see_an_error_message(String message) throws InterruptedException {
 		Thread.sleep(2000);
         l.verifyInvalidOtp(message);
         
