@@ -179,5 +179,44 @@ public class LoginTests {
         // Code to clear the password field, ensuring it's empty
    
     }
+    @Then("^User will see resend button activated$")
+    public void user_will_see_resend_button_activated() throws InterruptedException {
+    	Thread.sleep(60000);
+    	l.resendBtnEnabled();
+    }
+    	
+    	@And("^User clicks on change number text on which login page appears$")
+        public void user_clicks_on_change_number_text_on_which_login_page_appears() throws InterruptedException {
+    	
+    		l.changeNumberClicked();
+    		Thread.sleep(2000);
+    }
 
+    	@When("^User clicks on forgot password$")
+        public void user_clicks_on_forgot_password() throws Throwable {
+    		Thread.sleep(2000);    		
+    		l.ForgotPasswdBtn();
+        }
+
+        @Then("^User lands on forgot password screen$")
+        public void user_lands_on_forgot_password_screen() throws Throwable {
+        	
+        	l.verifyForgotPwdHeaderDisplayed();   
+        	}
+
+        @And("^Enters new password \"([^\"]*)\" and confirm password \"([^\"]*)\"$")
+        public void enters_new_password_and_confirm_password(String newPassword, String confirmPassword) {
+            l.setForgotPassword(newPassword, confirmPassword);
+        }
+
+        @And("^User clicks on Reset button$")
+        public void user_clicks_on_reset_button() throws Throwable {
+        	Thread.sleep(2000);    
+        l.clickResetBtn();
+           
+        }
+        @When("^User enters OTP \"([^\"]*)\" on forgot Password screen$")
+        public void user_enters_OTP_on_forgot_password_screen(String otp) {
+            l.enterForgotPwdOTP(otp);
+        }
 }

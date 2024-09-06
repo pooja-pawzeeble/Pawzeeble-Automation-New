@@ -1,16 +1,19 @@
 //author pooja
 package pooja.cucumber.demo.pageObject.client;
 import static com.codeborne.selenide.Condition.*;
-
-import static com.codeborne.selenide.Condition.partialText;
-import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
 import static com.codeborne.selenide.Selenide.$x;
 import org.junit.Assert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.interactions.Actions;
+
+import static com.codeborne.selenide.Selenide.*;
+import com.codeborne.selenide.SelenideElement;
+import com.codeborne.selenide.WebDriverRunner;
 
 import com.codeborne.selenide.ElementsCollection;
-import com.codeborne.selenide.SelenideElement;
+
 
 public class Login {
 	
@@ -28,7 +31,7 @@ public class Login {
 	
 	public static final String lblPassword = "//div[@id='passwordLabel']";
 	public static final String txtPassword  = "//input[@id='userPassword']";
-	public static final String btnForgotPassword  = "//span[@id='forgotPasswordBtn']";
+	public static final String btnForgotPassword  = "div span#forgotPasswordBtn";
 	
 	public static final String lblOTP = "//span[@id='generateOTPHandlerBtn']";
 	
@@ -39,6 +42,19 @@ public class Login {
 	
 	public static final String btnVerifyOtp= "//button[contains(text(),'Verify OTP')]";
 	public static final String btnResendOtp= "//button[contains(text(),'Resend OTP')]";
+	
+	public static final String changeNumber="//div[contains(text(),'Change number')]";
+	
+	//forgot password form
+	public static final String forgotPwdHeader= "//h3[@id='forgotPswdHeader']";
+	public static final String txtOtpForgotPwd  = "//input[@inputmode='text']";
+	public static final String lblforgotPwd = "//label[contains(text(),'New Password')]";
+	public static final String lblconfirmPwd = "//label[contains(text(),'Confirm Password')]";
+	public static final String txtNewPwd = "input#newPassword";
+	public static final String txtConfirmPwd = "input#confirmNewPassword";
+	public static final String btnFogotPwdResendOtp= "button#resendOTP";
+	public static final String btnFogotPwdReset= "//button[@id='resetPassword']";
+	
 	//Headings
 		public void verifyHeadingText(String heading) {
 			Assert.assertEquals("Welcome to Pawzeeble[ 👋🏼]", 
@@ -168,6 +184,75 @@ public class Login {
 						$x(pwdErrorMessage).text().trim(),	message.trim());
 				}
 			}
+		
+	// Resend button 
+		
+		public void resendBtnEnabled()
+		{
+			
+			$x(btnResendOtp).shouldBe(enabled);
+		}
+		
+// change number 
+		
+		public void changeNumberClicked() throws InterruptedException
+		{
+			
+			$x(changeNumber).click();
+			Thread.sleep(2000);
+			$x(lblHeading).should(exist).shouldBe(visible);
+			//$x(txtMobile).click();
+			$x(txtMobile).setValue("8806617718");
+		
+			Thread.sleep(2000);
+			
+		}
+	//forgot password	
+		public void ForgotPasswdBtn() throws InterruptedException
+		{
+			Thread.sleep(2000);
+		$(btnForgotPassword).click();
+		}
+		
+		public void verifyForgotPwdHeaderDisplayed() throws Throwable {
+			Thread.sleep(2000);
+
+			$x(forgotPwdHeader).should(exist).shouldBe(visible);
+		}
+		
+		public void setForgotPassword(String newPassword,String confirmPassword) { 
+			$(txtNewPwd).setValue(newPassword);
+	        
+	        $(txtConfirmPwd).setValue(confirmPassword); 
+		}
+		
+		public void enterForgotPwdOTP(String str)
+		{
+			ElementsCollection coll= $$(By.xpath(txtOtpForgotPwd));
+	    	
+	    	//String s = "0 9 8 7 6 5";
+			String[] str1 = str.split(" ");
+	    	for(SelenideElement e:coll)
+	    	{
+	    		e.sendKeys(str1);	
+	    	}	
+		}
+		
+		 public void clickResetBtn() throws Throwable {
+			 //Thread.sleep(2000);
+        // $(btnFogotPwdResendOtp).scrollIntoView(true).click();
+			 //JavascriptExecutor js = (JavascriptExecutor) driver;
+			// $(btnFogotPwdResendOtp).shouldBe(Condition.visible);
+			 //executeJavaScript("arguments[0].scrollIntoView(true);", btnFogotPwdResendOtp);
+			 //executeJavaScript("window.scrollTo(0, arguments[0].getBoundingClientRect().top + window.pageYOffset - 100);", btnFogotPwdResendOtp);
+			// $(btnFogotPwdResendOtp).click(); 
+			 try {
+			 Actions actions = new Actions(WebDriverRunner.getWebDriver());
+			 actions.moveToElement($(btnFogotPwdReset)).perform();
+			 $(btnFogotPwdReset).click(); 
+			 } catch (Exception e) {
+				    e.printStackTrace(); 
+		 }
 }
 
-
+}

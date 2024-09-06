@@ -78,6 +78,31 @@ Feature: ClientLogin
   And clicks the Continue button
   Then User should see an error message "Password is required!"
     
-#forgot password    
+#forgot password  
+Scenario: Successfull Reset password- Forgot password functionality
+  When User clicks on join Pawzeeble button
+  And User enter mobile number "8767252435" on login screen
+  And User clicks on forgot password 
+  Then User lands on forgot password screen
+  When User enters OTP "098765" on forgot Password screen
+  And Enters new password "pawzeeble1" and confirm password "pawzeeble1"
+  And User clicks on Reset button 
+ 
 # resend Otp
+
+Scenario: Check Resend button becomes activated after a timeout 
+  When User clicks on join Pawzeeble button
+  And User enter mobile number "8767252435" on login screen
+  And User clicks on Send OTP button
+  Then User will see resend button activated
+  
 #change number 
+Scenario: Change Mobile Number 
+  When User clicks on join Pawzeeble button
+  And User enter mobile number "8767252435" on login screen
+  And User clicks on Send OTP button
+  And User clicks on change number text on which login page appears
+  And User enter mobile number "8806617718" and password "pawzeeble1"
+  And clicks the Continue button
+  Then User logins successfully
+
